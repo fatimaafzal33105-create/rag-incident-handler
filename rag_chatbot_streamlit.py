@@ -8,7 +8,8 @@ load_dotenv()
 
 # -----------------------
 # LangChain imports
-from langchain_community.document_loaders import TextLoader, Docx2txtLoader
+#from langchain_community.document_loaders import TextLoader, Docx2txtLoader
+from langchain_community.document_loaders import Docx2txtLoader, UnstructuredFileLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -22,42 +23,47 @@ st.title("🛡️ Incident Handler RAG System")
 st.write("Ask questions based on incident handler journals")
 
 # -----------------------
+
 @st.cache_resource
 def load_vectorstore():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    txt_path = os.path.join(BASE_DIR, "data", "incident_handler_journal.txt")
+    docx_path = os.path.join(BASE_DIR, "data", "Incident_handler_journal_correct.docx")
+
     documents = []
 
-    # TXT document
-    txt_loader = TextLoader(
-        "data/incident_handler_journal.txt",
-        encoding="utf-8"
-    )
+    # TXT (cloud-safe)
+    txt_loader = UnstructuredFileLoader(txt_path)
     txt_docs = txt_loader.load()
     for doc in txt_docs:
-        doc.metadata = {"file_type": "txt", "source": "incident_handler_journal.txt"}
+        doc.metadata = {
+            "file_type": "txt",
+            "source": "incident_handler_journal.txt"
+        }
     documents.extend(txt_docs)
 
-    # DOCX document
-    docx_loader = Docx2txtLoader(
-        "data/Incident_handler_journal_correct.docx"
-    )
+    # DOCX
+    docx_loader = Docx2txtLoader(docx_path)
     docx_docs = docx_loader.load()
     for doc in docx_docs:
-        doc.metadata = {"file_type": "docx", "source": "Incident_handler_journal_correct.docx"}
+        doc.metadata = {
+            "file_type": "docx",
+            "source": "Incident_handler_journal_correct.docx"
+        }
     documents.extend(docx_docs)
 
-    # Split
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=50
     )
     docs = splitter.split_documents(documents)
 
-    # Embeddings + FAISS
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-    vectorstore = FAISS.from_documents(docs, embeddings)
 
+    vectorstore = FAISS.from_documents(docs, embeddings)
     return vectorstore
 
 # -----------------------
@@ -108,3 +114,4 @@ Question:
 
     st.subheader("📌 Answer")
     st.write(response.content)
+
