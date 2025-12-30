@@ -1,0 +1,241 @@
+Incident Handlers JournalTime Period Covered: September 2025 to December 
+2025
+
+Date: October 2025Entry: 1
+DescriptionA major data leak incident occurred in Pakistan involving 
+exposure of sensitive citizen data.
+Tools UsedNot specified
+The 5 WsWho: Government-related databases in Pakistan were affected; the 
+exposure was discovered and reported by cybersecurity researchers and 
+journalists.What: A major data leak involving sensitive citizen 
+information, including personal and identification records.Where: 
+Pakistan, government-managed or affiliated digital systems.When: 
+September to October 2025.Why: Inadequate security controls, lack of 
+proper access restrictions, and poor enforcement of cybersecurity 
+policies. Misconfigured or unsecured databases allowed unauthorized 
+access.
+How could the organization have prevented this incident?The organization 
+could have prevented this incident by enforcing strict access controls, 
+encrypting sensitive data, conducting regular security audits, and 
+ensuring proper configuration of government databases.
+What should be the organization’s response strategy?The organization 
+should immediately secure the affected systems, investigate the breach, 
+notify impacted individuals, and strengthen cybersecurity governance and 
+oversight mechanisms.
+Source: The Media Line – Big Data Leak in Pakistan
+
+Date: October 2025Entry: 2
+DescriptionA cyberattack disrupted operations at several of Europe’s 
+busiest airports, affecting flight schedules and airport services.
+Tools UsedNot specified
+The 5 WsWho: Airport IT infrastructure operators.What: Cyberattack 
+causing operational disruption.Where: Multiple European airports.When: 
+October 2025.Why: Targeting of critical transportation infrastructure.
+How could the organization have prevented this incident?The affected 
+airports could have reduced the risk by implementing stronger network 
+segmentation, continuous monitoring, and regular security assessments of 
+critical infrastructure systems.
+What should be the organization’s response strategy?Airport authorities 
+should activate their incident response plans, isolate affected systems, 
+restore services safely, and review security controls to prevent future 
+attacks.
+Source: Newsweek – Cyberattack Hits Europe’s Busiest Airports
+
+Date: September 2025Entry: 3
+DescriptionMarks and Spencer suffered a ransomware-related security 
+incident linked to weaknesses in Active Directory and service desk 
+processes.
+Tools UsedNot specified
+The 5 WsWho: Marks and Spencer.What: Ransomware attack.Where: Corporate 
+IT systems.When: September 2025.Why: Inadequate identity and access 
+management.
+How could the organization have prevented this incident?The organization 
+could have prevented this incident by strengthening identity and access 
+management, securing Active Directory environments, and applying the 
+principle of least privilege.
+What should be the organization’s response strategy?The organization 
+should isolate infected systems, conduct a forensic investigation, restore 
+data from backups, and implement improved ransomware defenses.
+Source: Specops Software – M and S Ransomware Hack
+
+Date: October 2025Entry: 4
+DescriptionWestern Sydney University warned students about fraudulent 
+emails falsely claiming degree revocations.
+Tools UsedNot specified
+The 5 WsWho: Western Sydney University students.What: Phishing and fraud 
+campaign.Where: Australia.When: October 2025.Why: Social engineering 
+exploiting trust in institutions.
+How could the organization have prevented this incident?The university 
+could have reduced the impact by implementing advanced email filtering 
+solutions and providing regular cybersecurity awareness training to 
+students and staff.
+What should be the organization’s response strategy?The university should 
+issue public warnings, investigate the source of fraudulent emails, and 
+strengthen email security controls.
+Source: ABC News – Fraudulent Degree Emails
+
+Date: December 2025Entry: 5
+DescriptionA fake WhatsApp API package on npm was found stealing 
+messages, contacts, and login tokens.
+Tools UsedNot specified
+The 5 WsWho: npm developers and WhatsApp users.What: Supply chain 
+malware.Where: npm package ecosystem.When: December 2025.Why: Malicious 
+code hidden in trusted packages.
+How could the organization have prevented this incident?Developers and 
+organizations could have prevented this incident by verifying third-party 
+packages, conducting code reviews, and using trusted repositories with 
+proper security checks.
+What should be the organization’s response strategy?The organization 
+should remove the malicious package, notify affected users, and review 
+dependency security practices.
+Source: The Hacker News – Fake WhatsApp API Package
+
+Date: December 2025Entry: 6
+DescriptionAndroid malware operations merged droppers, SMS theft, and 
+remote access trojan capabilities at scale.
+Tools UsedNot specified
+The 5 WsWho: Android users.What: Advanced mobile malware.Where: Android 
+ecosystem.When: December 2025.Why: Financial gain and surveillance.
+How could the organization have prevented this incident?The risk could 
+have been reduced by restricting application installation sources, 
+enforcing mobile security policies, and educating users about malicious 
+apps.
+What should be the organization’s response strategy?Organizations should 
+detect and remove infected applications, notify affected users, and 
+strengthen mobile malware detection mechanisms.
+Source: The Hacker News – Android Malware Operations
+
+Date: December 2025Entry: 7
+DescriptionRussia-linked hackers used Microsoft 365 device code phishing 
+for account takeovers.
+Tools UsedMicrosoft 365
+The 5 WsWho: Russia-linked hackers.What: Account takeover via 
+phishing.Where: Microsoft 365 environments.When: December 2025.Why: 
+Credential harvesting using trusted authentication flows.
+How could the organization have prevented this incident?Organizations 
+could have prevented this incident by disabling device code authentication 
+where unnecessary and enforcing strong multi-factor authentication 
+policies.
+What should be the organization’s response strategy?The organization 
+should revoke compromised credentials, investigate unauthorized access, 
+and enhance monitoring of authentication activities.
+Source: The Hacker News – Microsoft 365 Phishing
+
+Date: November 2025Entry: 8
+DescriptionThe University of Pennsylvania experienced two data breaches 
+in November.
+Tools UsedNone
+The 5 WsWho: University of Pennsylvania.What: Data breaches.Where: 
+University IT systems.When: November 2025.Why: Weak system security and 
+unauthorized access.
+How could the organization have prevented this incident?The university 
+could have prevented the breaches by strengthening system security, 
+applying timely patches, and improving access control mechanisms.
+What should be the organization’s response strategy?The organization 
+should investigate the incidents, secure affected systems, and notify 
+impacted individuals according to data protection requirements.
+Source: TechCrunch and Daily Pennsylvanian
+
+Date: October 2025Entry: 9
+DescriptionNikkei confirmed a data breach caused by a compromised Slack 
+application exposing employee data.
+Tools UsedSlack
+The 5 WsWho: Nikkei employees.What: Third-party application data 
+breach.Where: Slack workspace.When: October 2025.Why: Insecure 
+third-party integration.
+How could the organization have prevented this incident?The organization 
+could have prevented this incident by restricting third-party app 
+integrations and regularly reviewing application permissions.
+What should be the organization’s response strategy?The organization 
+should remove compromised applications, reset credentials, and enhance 
+monitoring of third-party integrations.
+Source: CSO Online – Nikkei Slack Breach
+
+Date: November 2025Entry: 10
+DescriptionPayroll data of Washington Post employees was stolen following 
+a breach linked to Oracle EBS systems.
+Tools UsedOracle EBS
+The 5 WsWho: Washington Post employees.What: Employee data 
+breach.Where: Payroll systems.When: November 2025.Why: Compromised 
+enterprise software.
+How could the organization have prevented this incident?The organization 
+could have reduced the risk by regularly patching enterprise software and 
+conducting security assessments of payroll systems.
+What should be the organization’s response strategy?The organization 
+should perform a forensic investigation, notify affected employees, and 
+provide identity protection services if necessary.
+Source: Cybersecurity Insiders and HR Grapevine
+
+Date: October 2025Entry: 11
+DescriptionRomanian Waters confirmed a cyberattack, though critical water 
+operations were unaffected.
+Tools UsedNone
+The 5 WsWho: Romanian Waters.What: Cyberattack.Where: Romania.When: 
+October 2025.Why: Targeting of public sector infrastructure.
+How could the organization have prevented this incident?The organization 
+could have strengthened defenses by improving cybersecurity measures for 
+public infrastructure and conducting regular security testing.
+What should be the organization’s response strategy?The organization 
+should monitor systems closely, investigate the attack, and ensure 
+continuity of critical services.
+Source: Security Affairs – Romanian Waters Cyberattack
+
+Date: November 2025Entry: 12
+DescriptionAttackers abused WhatsApp’s device linking feature to hijack 
+user accounts.
+Tools UsedWhatsApp
+The 5 WsWho: WhatsApp users.What: Account hijacking.Where: WhatsApp 
+platform.When: November 2025.Why: Exploitation of device linking 
+functionality.
+How could the organization have prevented this incident?The platform 
+could have prevented this incident by improving device verification 
+mechanisms and limiting unauthorized device linking.
+What should be the organization’s response strategy?The organization 
+should revoke unauthorized device access, notify affected users, and 
+enhance account security features.
+Source: BleepingComputer – WhatsApp Account Hijacking
+
+Date: November 2025Entry: 13
+DescriptionSalesforce reported possible customer data exposure following 
+a security incident.
+Tools UsedSalesforce platform
+The 5 WsWho: Salesforce customers.What: Potential data exposure.Where: 
+Cloud services.When: November 2025.Why: Unauthorized system access.
+How could the organization have prevented this incident?The organization 
+could have reduced the risk by strengthening cloud security controls and 
+monitoring unauthorized access attempts.
+What should be the organization’s response strategy?The organization 
+should investigate the incident, inform customers, and enhance security 
+monitoring and access controls.
+Source: Reuters – Salesforce Data Exposure
+
+Date: November 2025Entry: 14
+DescriptionCox Enterprises confirmed a data breach linked to Oracle 
+systems.
+Tools UsedOracle systems
+The 5 WsWho: Cox Enterprises.What: Corporate data breach.Where: 
+Enterprise systems.When: November 2025.Why: Third-party system 
+compromise.
+How could the organization have prevented this incident?The organization 
+could have prevented this incident by conducting thorough vendor risk 
+assessments and improving third-party security management.
+What should be the organization’s response strategy?The organization 
+should secure affected systems, review vendor relationships, and 
+strengthen third-party risk controls.
+Source: TechRadar – Cox Enterprises Breach
+
+Date: November 2025Entry: 15
+DescriptionAnthropic disrupted an AI-focused espionage campaign targeting 
+advanced AI systems.
+Tools UsedAI security monitoring tools
+The 5 WsWho: Anthropic and threat actors.What: AI espionage 
+attempt.Where: AI research infrastructure.When: November 2025.Why: 
+Theft of sensitive AI research data.
+How could the organization have prevented this incident?The organization 
+could have reduced the risk by strengthening security controls around AI 
+research infrastructure and monitoring access to sensitive systems.
+What should be the organization’s response strategy?The organization 
+should investigate the espionage attempt, enhance threat detection, and 
+collaborate with security partners to prevent future incidents.
+Source: Anthropic – Disrupting AI Espionage
+
