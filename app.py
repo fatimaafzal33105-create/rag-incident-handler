@@ -19,7 +19,7 @@ from langchain_core.messages import HumanMessage
 st.set_page_config(page_title="Incident Handler RAG", layout="centered")
 
 st.title("🛡️ Incident Handler RAG System")
-st.write("Ask questions based on incident handler journals")
+st.write("Ask questions based on cybersecurity incidents repoted between September 2025 and December 2025")
 
 # -----------------------
 @st.cache_resource
