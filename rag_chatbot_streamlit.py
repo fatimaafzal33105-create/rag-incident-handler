@@ -3,13 +3,12 @@ import streamlit as st
 from dotenv import load_dotenv
 
 # -----------------------
-# Load environment variables
+# Load environment variables (local only)
 load_dotenv()
 
 # -----------------------
 # LangChain imports
-#from langchain_community.document_loaders import TextLoader, Docx2txtLoader
-from langchain_community.document_loaders import Docx2txtLoader, UnstructuredFileLoader
+from langchain_community.document_loaders import TextLoader, Docx2txtLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -33,8 +32,8 @@ def load_vectorstore():
 
     documents = []
 
-    # TXT (cloud-safe)
-    txt_loader = UnstructuredFileLoader(txt_path)
+    # -------- TXT (STREAMLIT CLOUD SAFE) --------
+    txt_loader = TextLoader(txt_path, encoding="utf-8")
     txt_docs = txt_loader.load()
     for doc in txt_docs:
         doc.metadata = {
@@ -43,7 +42,7 @@ def load_vectorstore():
         }
     documents.extend(txt_docs)
 
-    # DOCX
+    # -------- DOCX --------
     docx_loader = Docx2txtLoader(docx_path)
     docx_docs = docx_loader.load()
     for doc in docx_docs:
@@ -53,16 +52,19 @@ def load_vectorstore():
         }
     documents.extend(docx_docs)
 
+    # -------- SPLITTING --------
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=50
     )
     docs = splitter.split_documents(documents)
 
+    # -------- EMBEDDINGS --------
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
+    # -------- VECTOR STORE --------
     vectorstore = FAISS.from_documents(docs, embeddings)
     return vectorstore
 
@@ -71,7 +73,8 @@ vectorstore = load_vectorstore()
 
 llm = ChatGroq(
     model="llama-3.1-8b-instant",
-    temperature=0
+    temperature=0,
+    api_key=os.getenv("GROQ_API_KEY")  # works with Streamlit secrets
 )
 
 # -----------------------
@@ -114,4 +117,3 @@ Question:
 
     st.subheader("📌 Answer")
     st.write(response.content)
-
