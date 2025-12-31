@@ -87,12 +87,13 @@ doc_filter = st.sidebar.selectbox(
 query = st.text_input("Ask a question about incidents:")
 
 if query:
-    # ----------------- Mobile-safe metadata filtering -----------------
+    # ----------------- Mobile-safe + None-safe metadata filtering -----------------
     def filter_docs(doc):
+        file_type = (doc.metadata or {}).get("file_type")
         if doc_filter == "TXT only":
-            return doc.metadata.get("file_type") == "txt"
+            return file_type == "txt"
         elif doc_filter == "DOCX only":
-            return doc.metadata.get("file_type") == "docx"
+            return file_type == "docx"
         else:
             return True  # All Documents
 
@@ -120,4 +121,5 @@ Question:
 
     st.subheader("📌 Answer")
     st.write(response.content)
+
 
