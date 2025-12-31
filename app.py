@@ -22,7 +22,6 @@ st.title("🛡️ Incident Handler RAG System")
 st.write("Ask questions based on incident handler journals")
 
 # -----------------------
-
 @st.cache_resource
 def load_vectorstore():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -88,20 +87,24 @@ doc_filter = st.sidebar.selectbox(
 query = st.text_input("Ask a question about incidents:")
 
 if query:
-    if doc_filter == "TXT only":
-        retriever = vectorstore.as_retriever(
-            search_kwargs={"k": 4, "filter": {"file_type": "txt"}}
-        )
-    elif doc_filter == "DOCX only":
-        retriever = vectorstore.as_retriever(
-            search_kwargs={"k": 4, "filter": {"file_type": "docx"}}
-        )
-    else:
-        retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    # ----------------- Mobile-safe metadata filtering -----------------
+    def filter_docs(doc):
+        if doc_filter == "TXT only":
+            return doc.metadata.get("file_type") == "txt"
+        elif doc_filter == "DOCX only":
+            return doc.metadata.get("file_type") == "docx"
+        else:
+            return True  # All Documents
 
+    retriever = vectorstore.as_retriever(
+        search_kwargs={"k": 4, "filter": filter_docs}
+    )
+
+    # ----------------- Retrieve documents -----------------
     retrieved_docs = retriever.invoke(query)
     context = "\n".join([doc.page_content for doc in retrieved_docs])
 
+    # ----------------- Create prompt -----------------
     prompt = f"""
 You are an incident response assistant.
 Answer the question strictly using the context below.
@@ -117,3 +120,4 @@ Question:
 
     st.subheader("📌 Answer")
     st.write(response.content)
+
