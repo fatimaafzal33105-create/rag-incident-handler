@@ -106,13 +106,23 @@ if query:
         )
 
     # -------- Retrieve documents --------
+if "list all" in query.lower() or "all incidents" in query.lower():
+    # Bypass retriever – load ALL chunks
+    retrieved_docs = vectorstore.similarity_search("", k=1000)
+else:
     retrieved_docs = retriever.invoke(query)
+
     context = "\n".join([doc.page_content for doc in retrieved_docs])
 
     # -------- Create prompt --------
     prompt = f"""
 You are an incident response assistant.
-Answer the question strictly using the context below.
+
+Using ONLY the context below:
+- Identify
+- Enumerate
+- List EACH DISTINCT incident separately
+- Do NOT summarize them into one incident
 
 Context:
 {context}
@@ -120,6 +130,7 @@ Context:
 Question:
 {query}
 """
+
 
     response = llm.invoke([HumanMessage(content=prompt)])
 
