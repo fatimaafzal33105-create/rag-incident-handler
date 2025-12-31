@@ -91,30 +91,30 @@ doc_filter = st.sidebar.selectbox(
 query = st.text_input("Ask a question about incidents:")
 
 if query:
-    # -------- Dictionary-based filtering --------
+    # -------- Create retriever FIRST --------
     if doc_filter == "TXT only":
         retriever = vectorstore.as_retriever(
-            search_kwargs={"k": 4, "filter": {"file_type": "txt"}}
+            search_kwargs={"k": 15, "filter": {"file_type": "txt"}}
         )
     elif doc_filter == "DOCX only":
         retriever = vectorstore.as_retriever(
-            search_kwargs={"k": 4, "filter": {"file_type": "docx"}}
+            search_kwargs={"k": 15, "filter": {"file_type": "docx"}}
         )
     else:
         retriever = vectorstore.as_retriever(
-            search_kwargs={"k": 4}
+            search_kwargs={"k": 15}
         )
 
-    # -------- Retrieve documents --------
-if "list all" in query.lower() or "all incidents" in query.lower():
-    # Bypass retriever – load ALL chunks
-    retrieved_docs = vectorstore.similarity_search("", k=1000)
-else:
-    retrieved_docs = retriever.invoke(query)
+    # -------- Handle "list all incidents" queries --------
+    if "list all" in query.lower() or "all incidents" in query.lower():
+        # bypass retriever → load EVERYTHING
+        retrieved_docs = vectorstore.similarity_search("", k=1000)
+    else:
+        retrieved_docs = retriever.invoke(query)
 
+    # -------- Build context --------
     context = "\n".join([doc.page_content for doc in retrieved_docs])
 
-    # -------- Create prompt --------
     prompt = f"""
 You are an incident response assistant.
 
@@ -122,7 +122,7 @@ Using ONLY the context below:
 - Identify
 - Enumerate
 - List EACH DISTINCT incident separately
-- Do NOT summarize them into one incident
+- Do NOT merge incidents
 
 Context:
 {context}
@@ -131,10 +131,8 @@ Question:
 {query}
 """
 
-
     response = llm.invoke([HumanMessage(content=prompt)])
 
     st.subheader("📌 Answer")
     st.write(response.content)
-
 
